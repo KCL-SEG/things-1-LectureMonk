@@ -4,9 +4,14 @@ from django.db.models import Model
 # Create your models here.
 class Thing(Model):
     name = models.CharField(
-        max_length=30
+        max_length=30,
+        blank=False,
+        unqiue=True
     )
     description = models.CharField(
-        max_length=520
+        max_length=120
     )
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(
+        min_length = 0,
+        max_length = 100
+    )
