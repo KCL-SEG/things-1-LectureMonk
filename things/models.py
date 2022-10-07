@@ -1,5 +1,7 @@
+from wsgiref.validate import validator
 from django.db import models
 from django.db.models import Model
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 class Thing(Model):
@@ -12,6 +14,5 @@ class Thing(Model):
         max_length=120
     )
     quantity = models.IntegerField(
-        min_length = 0,
-        max_length = 100
+        validators = [MinValueValidator(0), MaxValueValidator(100)]
     )
